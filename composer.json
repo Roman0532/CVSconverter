@@ -1,0 +1,16 @@
+{
+    "name": "root/app",
+    "authors": [
+        {
+            "name": "Roman Maksimov",
+            "email": "Roman62477@yandex.ru"
+        }
+    ],
+    "require": {
+        "ulrichsg/getopt-php": "^3.0",
+        "fzaninotto/faker": "^1.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    }
+}
