@@ -32,9 +32,9 @@ class ExecAppTest extends TestCase
             ['php ../../index.php -h'],
             ['php ../../index.php --help'],
             ['php ../../index.php -i ../testInput.csv -o ../testOutput.csv -c ../testConf.php'],
-            ['php ../../index.php -i ../testInput.csv -o ../testOutput.csv -c ../testConf.php -s'],
-            ["php ../../index.php -i ../testInput.csv -o ../testOutput.csv -c ../testConf.php -s -d ';'"],
-            ["php ../../index.php -i ../testInput.csv -o ../testOutput.csv -c ../testConf.php -s -d ','"],
+            ['php ../../index.php -i ../testInput.csv -o ../testOutput.csv -c ../testConf.php --skip-first'],
+            ["php ../../index.php -i ../testInput.csv -o ../testOutput.csv -c ../testConf.php --skip-first -d ';'"],
+            ["php ../../index.php -i ../testInput.csv -o ../testOutput.csv -c ../testConf.php --skip-first -d ','"],
             ["php ../../index.php -i ../testInput.csv -o ../testOutput.csv -c ../testConf.php -d ',' --strict"],
         ];
     }

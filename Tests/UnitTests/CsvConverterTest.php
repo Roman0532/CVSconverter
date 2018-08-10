@@ -18,7 +18,10 @@ class CsvConverterTest extends TestCase
     public function setUp()/* The :void return type declaration that should be here would cause a BC issue */
     {
         $configFileData = require self::CONFIG_FILE;
-        $this->cvsConverter = new CsvConverter(self::INPUT_FILE, self::OUTPUT_FILE, $configFileData, ',', false, false);
+
+        $encodingInputFile = mb_detect_encoding(file_get_contents(self::INPUT_FILE), ['UTF-8', 'Windows-1251']);
+
+        $this->cvsConverter = new CsvConverter(self::INPUT_FILE, self::OUTPUT_FILE, $configFileData, ',', false, false, $encodingInputFile);
     }
 
     public function testParseCsv()
@@ -93,6 +96,6 @@ class CsvConverterTest extends TestCase
 
         $this->assertTrue(file_exists(self::OUTPUT_FILE));
 
-        $this->assertEquals(file_get_contents(self::OUTPUT_FILE), file_get_contents('../../output.csv'));
+        $this->assertEquals(file_get_contents(self::OUTPUT_FILE), file_get_contents(self::TEST_OUTPUT_FILE));
     }
 }
