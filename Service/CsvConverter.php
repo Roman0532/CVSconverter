@@ -71,7 +71,7 @@ class CsvConverter
 
             /** @var integer $countColumn */
             if (sizeof($lineData) != $countColumn) {
-                echo 'Количество стобцов в файле не совпадает, результат может быть некорректен';
+                echo 'Количество стобцов в файле не совпадает либо неверный разделитель' . PHP_EOL;
                 exit(1);
             }
 
