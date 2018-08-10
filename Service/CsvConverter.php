@@ -15,6 +15,7 @@ class CsvConverter
     private $isSkipHeader;
     private $faker;
     private $isStrict;
+    private $outputEncoding;
 
     /**
      * CsvConverter constructor.
@@ -24,8 +25,9 @@ class CsvConverter
      * @param string $delimiter
      * @param bool $isSkipHeader
      * @param bool $isStrict
+     * @param $encodingInputFile
      */
-    public function __construct($inputFile, $outputFile, $configFileData, $delimiter, $isSkipHeader, $isStrict)
+    public function __construct($inputFile, $outputFile, $configFileData, $delimiter, $isSkipHeader, $isStrict, $encodingInputFile)
     {
         $this->isStrict = $isStrict;
         $this->inputFile = $inputFile;
@@ -33,6 +35,7 @@ class CsvConverter
         $this->delimiter = $delimiter;
         $this->isSkipHeader = $isSkipHeader;
         $this->configFileData = $configFileData;
+        $this->outputEncoding = $encodingInputFile;
         $this->faker = Factory::create();
     }
 
@@ -63,6 +66,7 @@ class CsvConverter
 
             if ($inputFile->key() == 0) {
                 $countColumn = sizeof($lineData);
+
             }
 
             /** @var integer $countColumn */
@@ -123,6 +127,14 @@ class CsvConverter
         $fp = fopen($this->outputFile, 'w');
 
         foreach ($data as $fields) {
+            foreach ($fields as $key => $field) {
+                $encodeLine = mb_detect_encoding($field, ['UTF-8', 'Windows-1251']);
+
+                if ($encodeLine != $this->outputEncoding) {
+                    $field = mb_convert_encoding($field, $this->outputEncoding, $encodeLine);
+                }
+                $fields[$key] = $field;
+            }
             fputcsv($fp, $fields, $this->delimiter);
         }
 
