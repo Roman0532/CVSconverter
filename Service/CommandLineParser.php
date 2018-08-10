@@ -22,6 +22,9 @@ class CommandLineParser
         $this->option = new GetOpt();
     }
 
+    /**
+     * Метод обьявления опций парсинга коммандной строки
+     */
     private function defineOptions()
     {
         $this->option->addOptions([
@@ -101,6 +104,7 @@ class CommandLineParser
     }
 
     /**
+     * Метод парсинга коммандной строки и записи в OptionData
      * @return OptionData
      * @throws ArgumentException
      */
@@ -132,6 +136,7 @@ class CommandLineParser
     }
 
     /**
+     * Метод вызова справки
      * @param $statusCode
      */
     public function help($statusCode)

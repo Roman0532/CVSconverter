@@ -9,13 +9,14 @@ use service\CsvConverter;
 
 class CsvConverterTest extends TestCase
 {
-    public $cvsConverter;
     const INPUT_FILE = '../testInput.csv';
     const OUTPUT_FILE = '../testOutput.csv';
     const TEST_OUTPUT_FILE = '../testOutput1.csv';
     const CONFIG_FILE = '../testConf.php';
 
-    public function setUp()/* The :void return type declaration that should be here would cause a BC issue */
+    public $cvsConverter;
+
+    public function setUp()
     {
         $configFileData = require self::CONFIG_FILE;
 
@@ -24,6 +25,9 @@ class CsvConverterTest extends TestCase
         $this->cvsConverter = new CsvConverter(self::INPUT_FILE, self::OUTPUT_FILE, $configFileData, ',', false, false, $encodingInputFile);
     }
 
+    /**
+     * Тестирование метода parseCsv()
+     */
     public function testParseCsv()
     {
         $inputData = [
@@ -53,6 +57,9 @@ class CsvConverterTest extends TestCase
         $this->assertEquals($inputData, $outputData);
     }
 
+    /**
+     * Тестирование метода ChangeDataForConfigData()
+     */
     public function testChangeDataForConfigData()
     {
         $inputData = [
@@ -83,7 +90,9 @@ class CsvConverterTest extends TestCase
         $this->assertEquals($inputData, $convertData);
     }
 
-
+    /**
+     * Тестирование метода ConvertCsv()
+     */
     public function testConvertCsv()
     {
         if (file_exists(self::OUTPUT_FILE)) {

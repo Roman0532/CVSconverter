@@ -4,8 +4,8 @@ use PHPUnit\Framework\TestCase;
 
 class ExecAppTest extends TestCase
 {
-
     /**
+     * Тестирование валидных данных
      * @dataProvider additionProviderValidData
      * @param $command
      */
@@ -15,8 +15,8 @@ class ExecAppTest extends TestCase
         $this->assertEquals(0, $exitCode);
     }
 
-
     /**
+     * Тестирование невалидных данных
      * @dataProvider additionProviderInvalidData
      * @param $command
      */
@@ -26,6 +26,9 @@ class ExecAppTest extends TestCase
         $this->assertNotEquals(0, $exitCode);
     }
 
+    /**
+     * @return array
+     */
     public function additionProviderValidData()
     {
         return [
@@ -39,6 +42,9 @@ class ExecAppTest extends TestCase
         ];
     }
 
+    /**
+     * @return array
+     */
     public function additionProviderInvalidData()
     {
         return [

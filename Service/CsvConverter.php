@@ -54,6 +54,7 @@ class CsvConverter
     }
 
     /**
+     * Метод считывания данных с файла данных в массив
      * @return array
      */
     public function parseCsv()
@@ -66,7 +67,6 @@ class CsvConverter
 
             if ($inputFile->key() == 0) {
                 $countColumn = sizeof($lineData);
-
             }
 
             /** @var integer $countColumn */
@@ -82,6 +82,7 @@ class CsvConverter
     }
 
     /**
+     * Метод конвертирования данных по условиям конфиг файла
      * @param $csvFileContent
      * @return array
      */
@@ -120,6 +121,7 @@ class CsvConverter
     }
 
     /**
+     * Метод записи массива в выходной csv файл
      * @param $data
      */
     public function arrayToCsv($data)
@@ -144,6 +146,7 @@ class CsvConverter
     }
 
     /**
+     * Метод проверки соотвествия столбцов
      * @param $csvFileContent
      * @param $configFileData
      * @return bool
