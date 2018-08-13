@@ -2,10 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once dirname(__DIR__) . '/../vendor/autoload.php';
-require_once dirname(__DIR__) . '/../Service/CsvConverter.php';
-
-use service\CsvConverter;
+use Services\CsvConverter;
 
 class CsvConverterTest extends TestCase
 {

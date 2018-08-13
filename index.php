@@ -1,12 +1,10 @@
 <?php
 
 use GetOpt\ArgumentException;
-use service\CommandLineParser;
-use service\CsvConverter;
+use Services\CommandLineParser;
+use Services\CsvConverter;
 
 require_once 'vendor/autoload.php';
-require_once 'Service/CommandLineParser.php';
-require_once 'Service/CsvConverter.php';
 
 $cmd = new CommandLineParser();
 
